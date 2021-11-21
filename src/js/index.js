@@ -52,4 +52,5 @@ setInterval(function () {
       document.getElementById('status-flame').innerHTML = sysHistory.flame_status;
       document.getElementById('status-mq7').innerHTML = sysHistory.mq_status;
     }).catch(error => console.error(error));
+    console.log('Hello World');
 }, 500);
