@@ -26,6 +26,7 @@ setInterval(function () {
         lastDataHistory: datahistory
       }
     }) => {
+      document.getElementById('flash-message').innerHTML = "";
       document.getElementById('value-temp').innerHTML = datahistory.temperature;
       document.getElementById('value-humidity').innerHTML = datahistory.humidity;
       document.getElementById('value-gas').innerHTML = datahistory.gas_density;
@@ -36,7 +37,10 @@ setInterval(function () {
       }
       document.getElementById('tanggal-data').innerHTML = new Date(datahistory.created_at);
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+      document.getElementById('flash-message').innerHTML = "Data History Connection Failed. Reconnecting..."
+      console.error(error)}
+      );
 
 
   fetch(`http://localhost:5000/lastsyshistory/${sys_device}`)
