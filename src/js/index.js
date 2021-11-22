@@ -1,9 +1,9 @@
 console.log('Hello World');
 
 // let sys_device = "sysInfo-240D6Br2EA-7zFXY"
-let sys_device = "sysInfo-FA-mdLiXzHO7VDtd"
+let sys_device = "sysInfo-5e_Mnlaj7fw1DhrF"
 
-fetch(`http://localhost:5000/sysinfo/${sys_device}`)
+fetch(`https://fire-detection-xharf.herokuapp.com/sysinfo/${sys_device}`)
     .then(response => response.json())
     .then(({
       data: {
@@ -19,7 +19,7 @@ fetch(`http://localhost:5000/sysinfo/${sys_device}`)
     .catch(error => console.error(error));
 
 setInterval(function () {
-  fetch(`http://localhost:5000/lastdatahistory/${sys_device}`)
+  fetch(`https://fire-detection-xharf.herokuapp.com/lastdatahistory/${sys_device}`)
     .then(response => response.json())
     .then(({
       data: {
@@ -43,7 +43,7 @@ setInterval(function () {
       );
 
 
-  fetch(`http://localhost:5000/lastsyshistory/${sys_device}`)
+  fetch(`https://fire-detection-xharf.herokuapp.com/lastsyshistory/${sys_device}`)
     .then(response => response.json())
     .then(({
       data: {
