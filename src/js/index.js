@@ -1,3 +1,10 @@
+function changeClass(id, className1, className2) {
+  document.getElementById(id).classList.add(className2);
+  document.getElementById(id).classList.remove(className1);
+  if ( document.getElementById(id).classList.contains(className1) )
+      document.getElementById(id).classList.toggle(className2);
+}
+
 console.log('Hello World');
 
 // let sys_device = "sysInfo-240D6Br2EA-7zFXY"
@@ -29,11 +36,17 @@ setInterval(function () {
       document.getElementById('flash-message').innerHTML = "";
       document.getElementById('value-temp').innerHTML = datahistory.temperature;
       document.getElementById('value-humidity').innerHTML = datahistory.humidity;
-      document.getElementById('value-gas').innerHTML = datahistory.gas_density;
+      document.getElementById('value-gas').innerHTML = datahistory.gas_density.toPrecision(4);
       if (datahistory.is_there_fire == true) {
         document.getElementById('value-flame').innerHTML = "YES";
+        changeClass('card-fire', 'bg-darkgrey', 'bg-danger');
+        changeClass('card-fire', 'text-black', 'text-white');
+        document.getElementById('card-text-fire').innerHTML = "Flame detected. Please check the room.";
       } else {
         document.getElementById('value-flame').innerHTML = "NO";
+        changeClass('card-fire', 'bg-danger', 'bg-darkgrey');
+        changeClass('card-fire', 'text-white', 'text-black');
+        document.getElementById('card-text-fire').innerHTML = "No flame detected, you can stay here";
       }
       document.getElementById('tanggal-data').innerHTML = new Date(datahistory.created_at);
     })
