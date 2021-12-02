@@ -37,6 +37,38 @@ setInterval(function () {
       document.getElementById('value-temp').innerHTML = datahistory.temperature;
       document.getElementById('value-humidity').innerHTML = datahistory.humidity;
       document.getElementById('value-gas').innerHTML = datahistory.gas_density.toPrecision(4);
+
+      if (datahistory.temperature > 30 ) {
+        changeClass('card-temperature', 'bg-darkgrey', 'bg-danger');
+        changeClass('card-temperature', 'text-black', 'text-white');
+        document.getElementById('card-text-temperature').innerHTML = "The temperature is too high!";
+      } else {
+          changeClass('card-temperature', 'bg-danger', 'bg-darkgrey');
+          changeClass('card-temperature', 'text-white', 'text-black');
+          document.getElementById('card-text-temperature').innerHTML = "The air temperature is safe to live in";
+      }
+
+      if (datahistory.humidity > 80 || datahistory.humidity < 45 ) {
+        changeClass('card-humidity', 'bg-darkgrey', 'bg-danger');
+        changeClass('card-humidity', 'text-black', 'text-white');
+        document.getElementById('card-text-humidity').innerHTML = "The humidity of this room is not right!";
+      } else {
+          changeClass('card-humidity', 'bg-danger', 'bg-darkgrey');
+          changeClass('card-humidity', 'text-white', 'text-black');
+          document.getElementById('card-text-humidity').innerHTML = "The air humidity is safe to live in";
+      }
+
+      if (datahistory.gas_density > 30 ) {
+        changeClass('card-gas', 'bg-darkgrey', 'bg-danger');
+        changeClass('card-gas', 'text-black', 'text-white');
+        document.getElementById('card-text-gas').innerHTML = "The air is in toxic level. Leave the room!";
+      } else {
+          changeClass('card-gas', 'bg-danger', 'bg-darkgrey');
+          changeClass('card-gas', 'text-white', 'text-black');
+          document.getElementById('card-text-gas').innerHTML = "The air is non-toxic and safe to live in";
+      }
+
+
       if (datahistory.is_there_fire == true) {
         document.getElementById('value-flame').innerHTML = "YES";
         changeClass('card-fire', 'bg-darkgrey', 'bg-danger');
